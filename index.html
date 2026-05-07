@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FRNG.NET</title>
+
+<link rel="icon" type="image/x-icon" href="siteimg/fav/favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="siteimg/fav/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="siteimg/fav/favicon-16x16.png">
+
+<link rel="apple-touch-icon" sizes="180x180" href="siteimg/fav/apple-touch-icon.png">
+
+<link rel="manifest" href="siteimg/fav/site.webmanifest">
+
+    <style>
+        /* Base Reset & Typography */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: #000000;
+            color: #ffffff;
+            font-family: Helvetica, sans-serif;
+            display: flex;
+            justify-content: center;
+            min-height: 100vh;
+            -webkit-font-smoothing: antialiased;
+            margin: 0 auto;
+        }
+        a {
+            text-decoration: none;
+        }
+
+        /* Central Container */
+        .container {
+            width: 320px;
+            padding: 20px 0 60px 0;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Header */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding: 0 4px;
+        }
+
+        .placeholder {
+            width: 28px;
+            height: 28px;
+            border-radius: 100%;
+            border: 1px solid #fff;
+            background-clip: content-box;
+            padding: 2px;
+        }
+
+        .header-title {
+            font-size: 18px;
+            color: #9A9A9A;
+            font-weight: 400;
+        }
+
+        /* Project Cards */
+        .card {
+            background-color: #181818;
+            border-radius: 42px;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+        .card:hover {
+            background-color: rgba(255, 255, 255, 0.15);
+            transition: 0.3s;
+        }
+
+.card-no {
+    display: none;
+}
+
+        .card-graphic {
+            width: 96px;
+            height: 96px;
+            border-radius: 100%;
+            background-color: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-shrink: 0;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .card-text {
+            text-align: right;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            padding-right: 8px;
+        }
+
+        .card-title {
+            font-size: 18px;
+            font-weight: 400;
+            color: #fff;
+        }
+
+        .card-explore {
+            font-size: 14px;
+            color: #9A9A9A;
+        }
+
+
+        /* Follow Section */
+        .follow-section {
+            background-color: #181818;
+            border-radius: 42px;
+            padding: 20px 16px;
+            margin-top: 0px;
+            margin-bottom: 40px;
+        }
+
+        .follow-header {
+            text-align: center;
+            font-size: 18px;
+            color: #9A9A9A;
+            margin-bottom: 20px;
+        }
+
+        .follow-item {
+            background-color: #272727;
+            border-radius: 100px;
+            padding: 10px 10px 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px !important;
+        }
+        .follow-item:hover, .follow-item2:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            transition: 0.3s;
+        }
+
+        .follow-item2 {
+            margin-bottom: 0 !important;
+            background-color: #272727;
+            border-radius: 100px;
+            padding: 10px 10px 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .follow-name {
+            font-size: 18px;
+            color: #ccc;
+            font-weight: 400;
+        }
+        .follow-name:hover {
+            color: #fff;
+        }
+
+        .follow-icon-wrapper {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background-color: #000000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Footer */
+        .footer-logo {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 40px;
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 14px;
+            margin: 0 auto;
+        }
+
+        .btn-contact {
+            border: 1px solid #333333;
+            border-radius: 30px;
+            padding: 14px 24px;
+            color: #888888;
+            text-decoration: none;
+            width: 100%;
+            text-align: center;
+        }
+
+        .mobile-view {
+            border: 1px solid #333333;
+            border-radius: 30px;
+            padding: 6px 6px 6px 18px;
+            display: flex;
+            align-items: center;
+            width: 48%;
+            gap: 12px;
+        }
+
+        .mobile-view span {
+            color: #888888;
+        }
+
+        .qr-frame {
+            width: 34px;
+            height: 34px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 8px;
+        }
+
+/*images*/
+
+.img-logo {
+width: 80px;
+height: 80px;
+
+}
+
+.img-card {
+width: 96px;
+height: 96px;
+
+}
+
+.img-icon {
+width: 20px;
+height: 20px;
+
+}
+
+        /* =========================================
+           Desktop Adaptation (min-width: 768px)
+           ========================================= */
+        @media (min-width: 768px) {
+            .container {
+                width: 90%;
+                max-width: 1000px; /* Expands the wrapper on desktop */
+                padding: 60px 0 80px 0;
+
+                height: 100vh !important;
+            }
+
+            main {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+                gap: 20px;
+                margin-bottom: 30px;
+            }
+            header {
+                margin-bottom: 50px;
+            }
+
+            .card {
+                margin-bottom: 0; /* Margin is handled by grid gap */
+                height: 100%;
+            }
+
+            .follow-section {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                gap: 20px;
+                padding: 40px; /* Extra breathing room for wider screens */
+                margin-bottom: 50px;
+            }
+
+            .follow-header {
+                grid-column: 1 / -1; /* Forces the header to span all columns */
+                margin-bottom: 10px;
+            }
+
+            .follow-item, .follow-item2 {
+                margin-bottom: 10px !important;
+                height: 100%;
+            }
+
+            .footer-bottom {
+                justify-content: center;
+                gap: 20px;
+                margin-top: 10px;
+            }
+
+            .btn-contact {
+                width: auto;
+                min-width: 200px;
+                margin-right: 0;
+            }
+
+            .mobile-view {
+                width: auto;
+                min-width: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        
+        <header>
+            <a href=""><img src="siteimg/logo.png" class="img-logo" /></a>
+           <a href=""> <div class="header-title">frng network</div></a>
+        </header>
+
+        <main>
+            <a href="#" class="card-no"> <div class="card">
+                <div class="card-graphic">
+                    <div class="placeholder"></div>
+                </div>
+                <div class="card-text">
+                    <div class="card-title">basic cms</div>
+                    <div class="card-explore">explore ></div>
+                </div>
+            </div></a>
+
+            <a href="https://firering.bandcamp.com/"> <div class="card">
+                <div class="card-graphic">
+                    <img src="siteimg/frng.png" class="img-card" />
+                </div>
+                <div class="card-text">
+                    <div class="card-title">frng music</div>
+                    <div class="card-explore">explore ></div>
+                </div>
+            </div></a>
+
+            <a href="#" class="card-no"> <div class="card">
+                <div class="card-graphic">
+                    <div class="placeholder"></div>
+                </div>
+                <div class="card-text">
+                    <div class="card-title">frng art</div>
+                    <div class="card-explore">explore ></div>
+                </div>
+            </div></a>
+
+           <a href="https://amnfx.bandcamp.com/"> <div class="card">
+                <div class="card-graphic">
+                    <img src="siteimg/amnfx.png" class="img-card" />
+                </div>
+                <div class="card-text">
+                    <div class="card-title">amnfx</div>
+                    <div class="card-explore">explore ></div>
+                </div>
+            </div></a>
+
+           <a href="https://www.instagram.com/rodnictrax">  <div class="card">
+                <div class="card-graphic">
+                    <img src="siteimg/rodnic.png" class="img-card" />
+                </div>
+                <div class="card-text">
+                    <div class="card-title">rodnic</div>
+                    <div class="card-explore">explore ></div>
+                </div>
+            </div></a>
+
+            <a href="https://www.instagram.com/ofarctica" > <div class="card">
+               <div class="card-graphic">
+                    <img src="siteimg/doa.png" class="img-card" />
+                </div>
+                <div class="card-text">
+                    <div class="card-title">dreams of arctica</div>
+                    <div class="card-explore">explore ></div>
+                </div>
+            </div></a>
+
+            <a href="#" class="card-no"> <div class="card">
+                <div class="card-graphic">
+                    <div class="placeholder"></div>
+                </div>
+                <div class="card-text">
+                    <div class="card-title">otherworldy</div>
+                    <div class="card-explore">explore ></div>
+                </div>
+            </div></a>
+        </main>
+
+        <section class="follow-section">
+            <div class="follow-header">follow</div>
+            
+            <a href="https://www.instagram.com/frng.network/"> <div class="follow-item">
+                <div class="follow-name">instagram</div>
+                <div class="follow-icon-wrapper"><img src="siteimg/icon-ig.svg" class="img-icon" /></div>
+            </div></a>
+            
+            <a href="https://t.me/frngnet"> <div class="follow-item">
+                <div class="follow-name">telegram</div>
+                <div class="follow-icon-wrapper"><img src="siteimg/icon-tg.svg" class="img-icon" /></div>
+            </div></a>
+            
+            <a href="https://www.facebook.com/frngnet"> <div class="follow-item">
+                <div class="follow-name">facebook</div>
+                <div class="follow-icon-wrapper"><img src="siteimg/icon-fb.svg" class="img-icon" /></div>
+            </div></a>
+            
+            <a href="https://www.youtube.com/@frngnet"> <div class="follow-item">
+                <div class="follow-name">youtube</div>
+               <div class="follow-icon-wrapper"><img src="siteimg/icon-yt.svg" class="img-icon" /></div>
+            </div></a>
+            
+            <a href="https://soundcloud.com/frngnet"> <div class="follow-item">
+                <div class="follow-name">soundcloud</div>
+                <div class="follow-icon-wrapper"><img src="siteimg/icon-sc.svg" class="img-icon" /></div>
+            </div></a>
+            
+            <a href="https://firering.bandcamp.com/"> <div class="follow-item2">
+                <div class="follow-name">bandcamp</div>
+                <div class="follow-icon-wrapper"><img src="siteimg/icon-bc.svg" class="img-icon" /></div>
+            </div></a>
+        </section>
+
+        <footer>
+            <div class="card-no">
+                <img src="siteimg/logo.png" class="img-logo" />
+            </div>
+            
+            <div class="footer-bottom">
+                <a href="#" class="btn-contact">contact</a>
+                
+                <div class="card-no">
+                    <span>view on mobile:</span>
+                    <div class="qr-frame"><div class="placeholder"></div></div>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+
+</body>
+</html>
